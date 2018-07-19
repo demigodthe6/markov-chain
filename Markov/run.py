@@ -4,6 +4,7 @@ It mixes up the lyrics and gives you a new song in the same words by using a Mar
 """
 from fetch_data import get_data
 from markov_python.cc_markov import MarkovChain
+import textwrap
 
 num = int(raw_input("How many songs do you want to mash up? "))
 
@@ -13,6 +14,7 @@ def get_songs():
 
 mc = MarkovChain()
 get_songs()
-output = mc.generate_text(num * 20)
-
-print " ".join(output)
+song_length = int(raw_input('How many words do you want in this song? '))
+output = mc.generate_text(song_length)
+output = " ".join(output)
+print textwrap.fill(output,20)
